@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  infinity-api: 
+    build:
+      context: .
+    container_name: infinity-api-builder
+    volumes:
+      - ./output:/app/output
+    environment:
+      - API_TOKEN=${API_TOKEN}
+      - REDDIT_USERNAME=${REDDIT_USERNAME}
+      - REDIRECT_URI=${REDIRECT_URI}
+      - ARCHIVE=${ARCHIVE}
