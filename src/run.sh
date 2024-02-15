@@ -15,9 +15,10 @@ cd /content
 if [ "$version" == "[Main]" ]; then
   git clone "https://github.com/Docile-Alligator/Infinity-For-Reddit"
 else
-  wget --output-file=Infinity.zip "https://github.com/Docile-Alligator/Infinity-For-Reddit/archive/refs/tags/v7.0.0.zip" 
-  unzip "Infinity.zip"
-  mv -T Infinity-For-Reddit-* Infinity-For-Reddit
+  #wget --output-file=Infinity.zip "https://github.com/Docile-Alligator/Infinity-For-Reddit/archive/refs/tags/v7.0.0.zip" 
+  #unzip "Infinity.zip"
+  #mv -T Infinity-For-Reddit-* Infinity-For-Reddit
+  git clone --depth 1 --branch v7.0.0 https://github.com/Docile-Alligator/Infinity-For-Reddit
 fi
 
 wget -P /content/ "https://github.com/TanukiAI/Infinity-keystore/raw/main/Infinity.jks"
