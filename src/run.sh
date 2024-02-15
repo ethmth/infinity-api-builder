@@ -15,8 +15,8 @@ cd /content
 if [ "$version" == "[Main]" ]; then
   git clone "https://github.com/Docile-Alligator/Infinity-For-Reddit"
 else
-  wget "https://github.com/Docile-Alligator/Infinity-For-Reddit/archive/2ae64f684919e87a3fa0feca736a2558124b34ea.zip"
-  unzip "2ae64f684919e87a3fa0feca736a2558124b34ea.zip"
+  wget --output-file=Infinity.zip "https://github.com/Docile-Alligator/Infinity-For-Reddit/archive/refs/tags/v7.0.0.zip" 
+  unzip "Infinity.zip"
   mv -T Infinity-For-Reddit-* Infinity-For-Reddit
 fi
 
