@@ -5,20 +5,12 @@ if ! [[ -v API_TOKEN ]]; then
     exit 1
 fi
 
-version='[Main]'
-if (( ARCHIVE )); then
-    version='[Archive]'
-fi
-
 cd /content
 
-if [ "$version" == "[Main]" ]; then
+if [ "$VERSION" == "" ]; then
   git clone "https://github.com/Docile-Alligator/Infinity-For-Reddit"
 else
-  #wget --output-file=Infinity.zip "https://github.com/Docile-Alligator/Infinity-For-Reddit/archive/refs/tags/v7.0.0.zip" 
-  #unzip "Infinity.zip"
-  #mv -T Infinity-For-Reddit-* Infinity-For-Reddit
-  git clone --depth 1 --branch v7.0.1 https://github.com/Docile-Alligator/Infinity-For-Reddit
+  git clone --depth 1 --branch $VERSION https://github.com/Docile-Alligator/Infinity-For-Reddit
 fi
 
 wget -P /content/ "https://github.com/TanukiAI/Infinity-keystore/raw/main/Infinity.jks"

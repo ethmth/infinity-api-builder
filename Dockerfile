@@ -1,6 +1,5 @@
-FROM ubuntu
+FROM ubuntu:24.04
 
-#RUN apt-get --quiet update && apt-get --quiet upgrade -y && apt-get --quiet install openjdk-11-jdk python3 python3-pip -y
 RUN apt-get --quiet update && apt-get --quiet install openjdk-11-jdk python3 python3-pip wget curl unzip git -y
 
 WORKDIR /content
@@ -14,10 +13,8 @@ ENV PATH="${PATH}:/content/android-sdk/tools/bin:/content/android-sdk/platform-t
 
 RUN bash /content/android-sdk/cmdline-tools/bin/sdkmanager --sdk_root=$ANDROID_SDK_ROOT "platforms;android-30" "build-tools;30.0.3"
 
-# RUN yes | bash /content/android-sdk/tools/bin/sdkmanager --licenses
 RUN yes | sdkmanager --sdk_root=/content/android-sdk --licenses
 
-# WORKDIR /src
 COPY src .
 
 CMD ["bash","run.sh"]
