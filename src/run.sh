@@ -5,7 +5,10 @@ if ! [[ -v API_TOKEN ]]; then
     exit 1
 fi
 
-cd /content
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+CONTENT_DIR="${CONTENT_DIR:-$SCRIPT_DIR}"
+export CONTENT_DIR
+cd "$CONTENT_DIR"
 
 if [ "$VERSION" == "" ]; then
   git clone "https://github.com/Docile-Alligator/Infinity-For-Reddit"
@@ -13,7 +16,7 @@ else
   git clone --depth 1 --branch $VERSION https://github.com/Docile-Alligator/Infinity-For-Reddit
 fi
 
-wget -P /content/ "https://github.com/TanukiAI/Infinity-keystore/raw/main/Infinity.jks"
+wget -P "$CONTENT_DIR/" "https://github.com/TanukiAI/Infinity-keystore/raw/main/Infinity.jks"
 
 python3 change_token.py
 
